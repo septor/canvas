@@ -1,22 +1,26 @@
 <?php
 // English language file
 
+// Global
+define("CANVAS_TITLE", "Canvas");
+
 // plugin.php
-define("UFM_PLUGIN_01", "Uniform of the Week Menu");
-define("UFM_PLUGIN_02", "Configure Uniform Menu");
-define("UFM_PLUGIN_03", " successfully installed.");
-define("UFM_PLUGIN_04", " successfully upgraded.");
+define("CANVAS_PLUGIN_01", "An image display menu.");
+define("CANVAS_PLUGIN_02", "Configure Canvas");
+define("CANVAS_PLUGIN_03", " successfully installed.");
+define("CANVAS_PLUGIN_04", " successfully upgraded.");
 
 // config.php
-define("UFM_CONFIG_01", "Settings successfully saved.");
-define("UFM_CONFIG_02", "Date:");
-define("UFM_CONFIG_03", "Uniform:");
-define("UFM_CONFIG_04", "Notes:");
-define("UFM_CONFIG_05", "Save Changes");
-define("UFM_CONFIG_06", "Configure Uniform Menu");
+define("CANVAS_CONFIG_01", "Settings successfully saved.");
+define("CANVAS_CONFIG_02", "Menu Title:<br /><i>Using CANVAS_TITLE or leaving this field blank utilizes the langauge file.</i>");
+define("CANVAS_CONFIG_03", "Image to dispay:");
+define("CANVAS_CONFIG_04", "None");
+define("CANVAS_CONFIG_05", "Random");
+define("CANVAS_CONFIG_06", "Image Size:<br /><i>Width x Height, no spaces.</i>");
+define("CANVAS_CONFIG_07", "Save Changes");
+define("CANVAS_CONFIG_08", "Configure Canvas");
 
-// uniform_menu.php
-define("UFM_MENU_01", "Uniform for the week of");
-define("UFM_MENU_02", "No uniform selected.");
-define("UFM_MENU_03", "Uniform Menu");
+// canvas_menu.php
+define("CANVAS_MENU_01", "No image selected to display.");
+
 ?>

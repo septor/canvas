@@ -7,22 +7,22 @@ $eplug_version		= "0.1.0";
 $eplug_author		= "Patrick Weaver"; 
 $eplug_url			= "http://trickmod.com/";
 $eplug_email		= "patrickweaver@gmail.com";
-$eplug_description	= UFM_PLUGIN_01;
+$eplug_description	= CANVAS_PLUGIN_01;
 $eplug_compatible	= "e107 v1.0+";
 $eplug_readme		= "";
 $eplug_compliant	= TRUE;
-$eplug_folder		= "uniform_menu";
-$eplug_menu_name	= "uniform_menu";
+$eplug_folder		= "canvas";
+$eplug_menu_name	= "canvas_menu";
 $eplug_conffile		= "config.php";
 $eplug_icon			= $eplug_folder."/images/icon.png";
 $eplug_icon_small	= $eplug_icon;
-$eplug_caption		= UFM_PLUGIN_02; 
+$eplug_caption		= CANVAS_PLUGIN_02; 
 
 // -- [ DEFAULT PREFERENCES ]
 $eplug_prefs = array(
-    "ufm_date" => '',
-    "ufm_uniform" => '',
-    "ufm_notes" => ''
+    "canvas_title" => 'CANVAS_TITLE',
+    "canvas_image" => 'random',
+    "canvas_size" => '100x100'
 );
 
 // -- [ MYSQL TABLES ]
@@ -35,11 +35,11 @@ $eplug_link_name	= "";
 $eplug_link_url		= "";
 
 // -- [ INSTALLED MESSAGE ]
-$eplug_done = $eplug_name.UFM_PLUGIN_03;
+$eplug_done = $eplug_name.CANVAS_PLUGIN_03;
 
 // -- [ UPGRADE INFORMATION ]
 $upgrade_add_prefs    = "";
 $upgrade_remove_prefs = "";
 $upgrade_alter_tables = "";
-$eplug_upgrade_done   = $eplug_name.UFM_PLUGIN_04;
+$eplug_upgrade_done   = $eplug_name.CANVAS_PLUGIN_04;
 ?>
