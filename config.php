@@ -11,6 +11,7 @@ if(isset($_POST['updatesettings']))
 	$pref['canvas_title'] 	= $tp->toDB($_POST['title']);
 	$pref['canvas_image']	= $tp->toDB($_POST['image']);
 	$pref['canvas_size']	= $tp->toDB(str_replace(" ", "", $_POST['size']));
+	$pref['canvas_flickr']	= $tp->toDB($_POST['flickr']);
 	save_prefs();
 	$message = CANVAS_CONFIG_01;
 }
@@ -32,15 +33,42 @@ $text = "
 			</tr>
 
 			<tr>
+				<td style='width:30%;' class='forumheader3'>".CANVAS_CONFIG_09.":<br /><i>########@N##</i></td>
+				<td style='width:70%;' class='forumheader3'>
+					<input type='text' class='tbox' name='flickr' value='".$pref['canvas_flickr']."' />
+				</td>
+			</tr>
+
+			<tr>
 				<td style='width:30%;' class='forumheader3'>".CANVAS_CONFIG_03."</td>
 				<td style='width:70%;' class='forumheader3'>
 					<input type='radio' name='image' value='none'".($pref['canvas_image'] == "none" ? " checked" : "")." /> ".CANVAS_CONFIG_04."<br />
 					<input type='radio' name='image' value='random'".($pref['canvas_image'] == "random" ? " checked" : "")." /> ".CANVAS_CONFIG_05."<br />
-					<div style='height:200px; overflow:auto;'>";
+					<div style='height:200px; overflow:auto;'>
+					<b>".CANVAS_CONFIG_10."</b><br />";
 
 					foreach(glob("{".CANVAS."*.jpg,".CANVAS."*.gif,".CANVAS."*.png}", GLOB_BRACE) as $image_file)
 					{
-						$text .= "<input type='radio' name='image' value='".str_replace(CANVAS, "", $image_file)."'".($pref['canvas_image'] == str_replace(CANVAS, "", $image_file) ? " checked" : "")." /> <img src='".$image_file."' style='width:".$size[0]."px; height:".$size[1]."px;' /><br />";
+						$text .= "<input type='radio' name='image' value='".$image_file."'".($pref['canvas_image'] == $image_file ? " checked" : "")." /> <img src='".$image_file."' style='width:".$size[0]."px; height:".$size[1]."px;' /><br />";
+					}
+
+					if(isset($pref['canvas_flickr']))
+					{
+						$text .= "<br /><b>".CANVAS_CONFIG_11."</b><br />";
+
+						$flickr = simplexml_load_file("http://api.flickr.com/services/feeds/photos_public.gne?id=".$pref['canvas_flickr']."&lang=en-us&format=rss_200");
+						$flickrdoc = new DOMDocument();
+						foreach($flickr->channel->item as $item)
+						{
+							$flickrdoc->loadHTML($item->description);
+							$tags = $flickrdoc->getElementsByTagName('img');
+
+							foreach($tags as $tag)
+							{
+								$text .= "<input type='radio' name='image' value='".$tag->getAttribute('src')."'".($pref['canvas_image'] == $tag->getAttribute('src') ? " checked" : "")." /> <img src='".$tag->getAttribute('src')."' style='width:".$size[0]."px; height:".$size[1]."px;' /><br />";
+							}
+						}
+
 					}
 					
 					$text .= "	

@@ -11,12 +11,30 @@ $title = ($pref['canvas_title'] == "CANVAS_TITLE" || empty($pref['canvas_title']
 if($pref['canvas_image'] == "random")
 {
 	$images = array();
+	
 	foreach(glob("{".CANVAS."*.jpg,".CANVAS."*.gif,".CANVAS."*.png}", GLOB_BRACE) as $image_file){
 		array_push($images, str_replace(CANVAS, "", $image_file));
 	}
 
+	if(isset($pref['canvas_flickr']))
+	{
+		$flickr = simplexml_load_file("http://api.flickr.com/services/feeds/photos_public.gne?id=".$pref['canvas_flickr']."&lang=en-us&format=rss_200");
+		$flickrdoc = new DOMDocument();
+		foreach($flickr->channel->item as $item)
+		{
+			$flickrdoc->loadHTML($item->description);
+			$tags = $flickrdoc->getElementsByTagName('img');
+
+			foreach($tags as $tag)
+			{
+				array_push($images, $tag->getAttribute('src'));
+			}
+		}
+
+	}
+
 	$image = $images[array_rand($images)];
-	$text .= "<a href='".CANVAS.$image."' target='_blank'><img src='".CANVAS.$image."' style='width:".$size[0]."px; height:".$size[1]."px; border:0;'></a>";
+	$text .= "<a href='".$image."' target='_blank'><img src='".$image."' style='width:".$size[0]."px; height:".$size[1]."px; border:0;'></a>";
 }
 else if($pref['canvas_image'] == "none")
 {
@@ -24,7 +42,7 @@ else if($pref['canvas_image'] == "none")
 }
 else
 {
-	$text .= "<a href='".CANVAS.$pref['canvas_image']."' target='_blank'><img src='".CANVAS.$pref['canvas_image']."' style='width:".$size[0]."px; height:".$size[1]."px; border:0;'></a>";
+	$text .= "<a href='".$pref['canvas_image']."' target='_blank'><img src='".$pref['canvas_image']."' style='width:".$size[0]."px; height:".$size[1]."px; border:0;'></a>";
 }
 
 $text .= "</div>";

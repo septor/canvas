@@ -2,7 +2,7 @@
 
 Canvas is an image display menu.
 
-Currently uploading any image file (.gif, .png, .jpg) inside the `canvas/images/canvas` directory will put them in the running to be displayed on the menu item.
+Any image file (.gif, .png, .jpg) inside the `canvas/images/canvas` directory and any photo on your Flickr account (if set up) are in the running to be displayed on Canvas.
 
 ## Settings
 
@@ -12,10 +12,8 @@ On to the settings that matter:
 
 * Image: You can pick between `None`, `Random`, or any single image. Random is selected by default.
 * Size: Entering a Width x Height value here resizes the images. All images on the menu will link to a fullsize image that opens in a new window.
+* Flickr ID: Enter your Flickr ID in this box and your Flickr photos will also be in the Image selection area as well as in the random queue. *Note: You should not mistake your Flickr ID with your Flickr Username! It is generally in the following format: 12345678@N01*
 
-## In The Future
-
-I have plans to allow for the use of a Flickr feed and possibly an Instagram profile as the source of the images. I just thought about this as I typed this up, so no idea how likely it is to happen!
 
 # Translations
 
