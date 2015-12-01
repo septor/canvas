@@ -1,3 +1,10 @@
+## Notice
+
+This menu is no longer supported. Fixes will not be released, and it will not be updated to work with v2 of e107.
+
+If you are using v1 of e107, it should continue to function perfectly fine. If it breaks, I'm terribly sorry for your loss.
+If you are using v2 of e107, I encourage you to use my newly created [Imggregator](https://github.com/septor/imggregator/) plugin. Please note, however, that Imggregator does not support uploading your own images into a folder. Check out the core _Gallery_ plugin for that functionality.
+
 # Canvas
 
 Canvas is an image display menu.
